@@ -180,11 +180,25 @@ def resolve_branch(branch_arg: str | None) -> str:
     return branch
 
 
+def local_branch_exists(branch: str) -> bool:
+    """Check if a branch exists locally."""
+    result = run_git(["branch", "--list", branch])
+    return bool(result.stdout.strip())
+
+
 def git_push(branch: str):
-    """Push commits to the remote branch, creating it if necessary."""
+    """Push commits to the remote branch, creating it locally and remotely if necessary."""
     if remote_branch_exists(branch):
         result = run_git(["push", "origin", branch])
     else:
+        # Create local branch from current HEAD if it doesn't exist locally
+        if not local_branch_exists(branch):
+            result = run_git(["branch", branch])
+            if result.returncode != 0:
+                logger.error("Failed to create local branch '%s': %s", branch, result.stderr)
+                sys.exit(1)
+            logger.info("Local branch '%s' created from current HEAD.", branch)
+
         result = run_git(["push", "--set-upstream", "origin", branch])
 
     if result.returncode != 0:
