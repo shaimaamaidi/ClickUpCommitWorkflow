@@ -1,12 +1,6 @@
 """
 Script to perform a Git commit workflow (add + commit + push) and update the
 status of a ClickUp task.
-
-Usage:
-    python clickup_commit.py --task-id <TASK_ID> --status <STATUS> --message <COMMIT_MESSAGE> --branch <BRANCH>
-
-Example:
-    python clickup_commit.py --task-id abc123 --status "in review" --message "feat: add login page" --branch main
 """
 
 import argparse
