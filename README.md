@@ -1,6 +1,6 @@
 # TaskGenerator
 
-Automates commit workflows and updates task status in ClickUp.
+Automates commit workflows and updates task status in ClickUp using TASK ID.
 
 ## Requirements
 
