@@ -50,8 +50,19 @@ The branch parameter is optional. The cases below apply when running the command
 
 ## Examples (screenshots)
 
+### Case: Valid script
+
 ![Validate script](docs/images/validate_script.png)
+
+### Case: Push with creating branch
+
 ![Push with creating branch](docs/images/push_with_creating_branch.png)
+
+### Case: First push without specifying branch
+
 ![First push without specifying branch](docs/images/first_push_without_specifying_branch.png)
+
+### Case: Error status
+
 ![Error status](docs/images/error_status.png)
 
